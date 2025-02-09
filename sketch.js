@@ -27,11 +27,12 @@ function mousePressed() {
   }
 }
 
-function touchStarted(){
-   let num = random(20, 60);
-   for (let i = 0; i < num; i++) {
-     let vel = p5.Vector.random2D().mult(random(2, 5));
-     stars.push(new Star(touch.x, touch.y, vel.x, vel.y));
-   }
-  
+function touchStarted() {
+  let num = random(20, 60);
+  for (let i = 0; i < num; i++) {
+    let vel = p5.Vector.random2D().mult(random(2, 5));
+    for (let touch of touches) {
+      stars.push(new Star(touch.x, touch.y, vel.x, vel.y));
+    }
+  }
 }
